@@ -25,8 +25,11 @@ def new():
 
 @app.route('/snacks/<int:id>', methods=["GET", "PATCH", "DELETE"])
 def show(id):
-    # Refactored using a generator so that we do not need to do [0]!
-    found_snack = next(snack for snack in snacks if snack.id == id)
+    try: 
+        # Refactored using a generator so that we do not need to do [0]!
+        found_snack = next(snack for snack in snacks if snack.id == id)
+    except:
+    	return render_template('404.html')
 
     # if we are updating a toy...
     if request.method == b"PATCH":
@@ -43,9 +46,12 @@ def show(id):
 
 @app.route('/snacks/<int:id>/edit')
 def edit(id):
-    # Refactored using a generator so that we do not need to do [0]!
-    found_snack = next(snack for snack in snacks if snack.id == id)
-    return render_template('edit.html', snack=found_snaSck)
-    
+    try:
+        # Refactored using a generator so that we do not need to do [0]!
+        found_snack = next(snack for snack in snacks if snack.id == id)
+        return render_template('edit.html', snack=found_snack)
+    except:
+       return render_template('404.html')    
+       
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
