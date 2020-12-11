@@ -5,13 +5,6 @@ from snack import Snack
 app = Flask(__name__)
 modus = Modus(app)
 
-#cookie = Snack(name = 'cookie', kind = 'desert')
-#banana = Snack(name = banana, kind = fruit)
-
-
-#snacks  = [cookie]
-
-#snacks.append(banana)
 snacks = [Snack('banana','fruit')]
 
 @app.route('/')
@@ -52,7 +45,7 @@ def show(id):
 def edit(id):
     # Refactored using a generator so that we do not need to do [0]!
     found_snack = next(snack for snack in snacks if snack.id == id)
-    return render_template('edit.html', snack=found_snack)
+    return render_template('edit.html', snack=found_snaSck)
     
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
