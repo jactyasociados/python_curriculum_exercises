@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="/math">
+        <input type="text" name="num1" placeholder="first number">
+        <input type="text" name="num2" placeholder="second number">
+        <select name="calculation">
+        <option value="" selected>Calculation</option>
+        <option value="add">Sum</option>
+        <option value="sub">Substract</option>
+        <option value="mul">Multiply</option>
+        <option value="div">Divide</option>
+        </select>
+        <input type="submit" value="Submit Form">
+    </form>
+{% endblock %}
