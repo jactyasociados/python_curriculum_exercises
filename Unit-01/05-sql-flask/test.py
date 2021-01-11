@@ -6,7 +6,7 @@ import psycopg2
 
 class BaseTestCase(TestCase):
     def create_app(self):
-        conn = psycopg2.connect("dbname=flask-sql-snacks-test")
+        conn = psycopg2.connect(host="127.0.0.1", database="flask-sql-snacks-test", user="postgres", password="1to1anyherzt");
         cur = conn.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS snacks (id serial PRIMARY KEY, name text, kind text);")
         conn.commit()
@@ -15,13 +15,15 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         create_snack("hershey", "chocolate")
-
+    
     def tearDown(self):
-        conn = psycopg2.connect("dbname=flask-sql-snacks-test")
+        conn = psycopg2.connect(host="127.0.0.1", database="flask-sql-snacks-test", user="postgres", password="1to1anyherzt");
         cur = conn.cursor()
         cur.execute("DROP TABLE snacks;")
         conn.commit()
         conn.close()
+
+    
 
     def test_index(self):
         response = self.client.get('/snacks', content_type='html/text')
@@ -62,6 +64,7 @@ class BaseTestCase(TestCase):
             follow_redirects=True
         )
         self.assertNotIn(b'hershey chocolate', response.data)
+    
 
 
 if __name__ == '__main__':
