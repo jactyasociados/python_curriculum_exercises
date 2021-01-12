@@ -4,7 +4,7 @@ import unittest
 
 class BaseTestCase(TestCase):
     def create_app(self):
-        app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///testing.db'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1to1anyherzt@127.0.0.1:5432/flask-snacks-app-test'
         return app
 
     def setUp(self):
