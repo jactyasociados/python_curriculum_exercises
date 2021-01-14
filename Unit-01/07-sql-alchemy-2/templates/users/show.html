@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Show a user!</h1>
+   
+    <p>
+    {{ user.first_name }} {{ user.last_name }}
+    </p>
+    <p>
+    {{ user.image_url }}
+    </p>
+    <a href="{{ url_for('edit', id=user.id) }}">Edit a user!</a>
+    <a href="{{ url_for('index') }}">Home</a>
+    
+    
+{% endblock %}
