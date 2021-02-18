@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Edit a email!</h1>
+    <form action="{{url_for('emails_show', person_id=email.person_id, id=email.id)}}?_method=PATCH" method="POST">
+    <input type="text" name="email" placeholder="email" value="{{ email.email }}">
+    <button>Edit an email!</button>
+    </form>
+    <a href="{{ url_for('index') }}">Home</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a href="{{ url_for('emails_new', person_id=person.id) }}">Add a new email!</a>
+    <h1>See all the emails for {{ person.first_name }}</h1>
+    {% for email in person.emails %}
+    <p>
+    <a href="{{ url_for('emails_show', person_id=person.id, id=email.id) }}">{{ email.email }}</a>
+    <br>
+    <a href="{{ url_for('emails_edit', person_id=person.id, id=email.id) }}">Edit Email!</a>
+    <form method="POST" action="{{ url_for('emails_show', person_id=person.id, id=email.id) }}?_method=DELETE">
+    <button>Delete an Email!</button>
+    </form>
+    <a href="{{ url_for('index') }}">Home</a>
+    </p>
+    {% endfor %}
+{% endblock %}

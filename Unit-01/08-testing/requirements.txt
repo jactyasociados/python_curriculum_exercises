@@ -1,0 +1,6 @@
+flask==1.0.1
+psycopg2
+flask-script
+flask-migrate
+flask-sqlalchemy
+gunicorn
